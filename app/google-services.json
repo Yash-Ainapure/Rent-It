@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "732109458116",
+    "project_id": "rent-it-72df9",
+    "storage_bucket": "rent-it-72df9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:732109458116:android:006ea04a8ca531b1b39791",
+        "android_client_info": {
+          "package_name": "com.example.rent_it"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYPKZ8x6mAJXfdZZPck806LqtylSqYeLw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
