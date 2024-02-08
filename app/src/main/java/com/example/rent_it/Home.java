@@ -105,7 +105,7 @@ public class Home extends AppCompatActivity {
                     //startActivity(new Intent(Home.this,MyAccount.class));
                 } else if (itemId == R.id.wishlist) {
                     Log.i("MENU_DRAWER_TAG", "My products is clicked");
-                    //startActivity(new Intent(Home.this,MyAccount.class));
+                    startActivity(new Intent(Home.this,MyProducts.class));
                 }
                 else if (itemId == R.id.logout) {
                     mAuth=FirebaseAuth.getInstance();

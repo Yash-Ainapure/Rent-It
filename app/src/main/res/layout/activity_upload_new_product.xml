@@ -17,6 +17,7 @@
         android:orientation="vertical">
 
         <ImageView
+            android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:scaleType="centerCrop"
@@ -47,6 +48,7 @@
             android:layout_height="wrap_content">
             <EditText
                 android:id="@+id/etProductPrice"
+                android:inputType="number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Product Price"
@@ -64,39 +66,24 @@
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
             android:layout_height="wrap_content">
-            <Button
-                android:id="@+id/buttonDatePicker"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/borderbtn"
-                android:drawableLeft="@drawable/calendar_icon"
-                android:drawablePadding="10dp"
-                android:padding="10dp"
-                android:text="Choose starting date"
-                android:textColor="@color/calbtn"
-                android:textStyle="bold"
-
-                />
+            <TextView
+                android:text="Select duration"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <Button
-                android:id="@+id/buttonDatePicker2"
+            <NumberPicker
+                android:id="@+id/numberPickerRooms"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/borderbtn"
-                android:drawableLeft="@drawable/calendar_icon"
-                android:drawablePadding="10dp"
-                android:padding="10dp"
-                android:text="Choose ending date"
-                android:textColor="@color/calbtn"
-                android:textStyle="bold"
-
-                />
+                android:background="@drawable/np_number_picker_default" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"

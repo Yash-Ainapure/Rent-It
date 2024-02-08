@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -31,6 +32,7 @@ public class UploadImage extends AppCompatActivity {
     StorageReference storageReference;
     FirebaseAuth mAuth;
     DatabaseReference databaseReference;
+    EditText name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +40,7 @@ public class UploadImage extends AppCompatActivity {
         b1=(Button) findViewById(R.id.select);
         b2=(Button) findViewById(R.id.upload);
         iv=(ImageView) findViewById(R.id.imageView3);
+        name=findViewById(R.id.editTextText2);
 
         mAuth = FirebaseAuth.getInstance();
         b1.setOnClickListener(new View.OnClickListener() {
@@ -58,11 +61,26 @@ public class UploadImage extends AppCompatActivity {
         pd=new ProgressDialog(this);
         pd.setTitle("Uploading File....");
         pd.show();
+
+        String productName=name.getText().toString();
+        if (productName.isEmpty()){
+            Toast.makeText(this, "Please enter product name ", Toast.LENGTH_SHORT).show();
+            if(pd.isShowing()){
+                pd.dismiss();
+            }
+            return;
+        }
+        if(imageuri==null){
+            Toast.makeText(this, "please select a image", Toast.LENGTH_SHORT).show();
+            if(pd.isShowing()){
+                pd.dismiss();
+            }
+            return;
+        }
         FirebaseUser user = mAuth.getCurrentUser();
         String UserId=user.getUid();
-//        SessionManagement sessionManagement=new SessionManagement(this);
-//        String UserId=sessionManagement.getSession();
-        storageReference= FirebaseStorage.getInstance().getReference("products/"+UserId);
+
+        storageReference= FirebaseStorage.getInstance().getReference("products/"+UserId+"/"+name.getText().toString());
         storageReference.putFile(imageuri)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
@@ -72,6 +90,19 @@ public class UploadImage extends AppCompatActivity {
                         if(pd.isShowing()){
                             pd.dismiss();
                         }
+
+                        // Get the download URL of the uploaded image
+                        storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri downloadUri) {
+                                // Pass the image URI to the next activity
+                                Intent intent = new Intent(UploadImage.this, UploadNewProduct.class);
+                                intent.putExtra("imageUri", downloadUri.toString());
+                                intent.putExtra("productName",name.getText().toString());
+                                startActivity(intent);
+                            }
+                        });
+
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
