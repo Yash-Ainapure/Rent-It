@@ -13,6 +13,9 @@
         android:theme="@style/Theme.RentIt"
         tools:targetApi="31">
         <activity
+            android:name=".PurchasedProductDetails"
+            android:exported="false" />
+        <activity
             android:name=".MyPurchasedProducts"
             android:exported="false" />
         <activity

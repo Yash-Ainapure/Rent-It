@@ -46,7 +46,7 @@ public class PurchasedProductAdapter extends RecyclerView.Adapter<PurchasedProdu
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), ProductDetails.class);
+                Intent intent = new Intent(v.getContext(), PurchasedProductDetails.class);
                 intent.putExtra("product", product);
                 v.getContext().startActivity(intent);
             }

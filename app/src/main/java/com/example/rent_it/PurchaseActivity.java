@@ -77,6 +77,7 @@ public class PurchaseActivity extends AppCompatActivity {
 
                             usersRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("myPurchasedProducts").push().setValue(productInfo);
 
+                            Toast.makeText(PurchaseActivity.this, "Product purchased successfully", Toast.LENGTH_SHORT).show();
                             //redirecting to home page after successful product purchased
                             startActivity(new Intent(PurchaseActivity.this,Home.class));
                         }
