@@ -1,12 +1,14 @@
 package com.example.rent_it;
 
-public class ProductInfo {
-    String name,price,description,duration,imageUrl,status,soldTo;
+import java.io.Serializable;
+
+public class ProductInfo implements Serializable {
+    String name,price,description,duration,imageUrl,status,soldTo,ownerId;
 
     public ProductInfo() {
     }
 
-    public ProductInfo(String name, String price, String description, String duration, String imageUrl, String status,String soldTo) {
+    public ProductInfo(String name, String price, String description, String duration, String imageUrl, String status,String soldTo,String ownerId) {
         this.name = name;
         this.price = price;
         this.description = description;
@@ -14,6 +16,14 @@ public class ProductInfo {
         this.imageUrl = imageUrl;
         this.status = status;
         this.soldTo=soldTo;
+        this.ownerId=ownerId;
+    }
+
+    public String getOwnerId() {
+        return ownerId;
+    }
+    public void setOwnerId(String ownerId) {
+        this.ownerId = ownerId;
     }
 
     public String getSoldTo() {

@@ -102,7 +102,7 @@ public class Home extends AppCompatActivity {
                 }
                 else if (itemId == R.id.view_manage) {
                     Log.i("MENU_DRAWER_TAG", "my purchased products is clicked");
-                    //startActivity(new Intent(Home.this,MyAccount.class));
+                    startActivity(new Intent(Home.this,MyPurchasedProducts.class));
                 } else if (itemId == R.id.wishlist) {
                     Log.i("MENU_DRAWER_TAG", "My products is clicked");
                     startActivity(new Intent(Home.this,MyProducts.class));

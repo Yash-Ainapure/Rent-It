@@ -38,4 +38,12 @@
         android:layout_toEndOf="@+id/productImage"
         android:layout_marginStart="16dp"
         />
+    <TextView
+        android:id="@+id/soldTo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/productDuration"
+        android:layout_toEndOf="@+id/productImage"
+        android:layout_marginStart="16dp"
+        />
 </RelativeLayout>

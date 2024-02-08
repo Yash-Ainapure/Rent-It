@@ -1,6 +1,6 @@
 package com.example.rent_it;
 
-import android.util.Log;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,15 +10,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class MyProductsAdapter extends RecyclerView.Adapter<MyProductsAdapter.ProductViewHolder> {
+public class PurchasedProductAdapter extends RecyclerView.Adapter<PurchasedProductAdapter.ProductViewHolder> {
 
     private List<ProductInfo> productList;
 
-    public MyProductsAdapter(List<ProductInfo> productList) {
+    public PurchasedProductAdapter(List<ProductInfo> productList) {
         this.productList = productList;
     }
 
@@ -35,12 +36,21 @@ public class MyProductsAdapter extends RecyclerView.Adapter<MyProductsAdapter.Pr
 
         // Bind data to the ViewHolder
         holder.txtName.setText("Name : "+product.getName());
-        holder.txtPrice.setText("Price : "+String.valueOf(product.getPrice()));
+        holder.txtPrice.setText("Price purchased at : "+String.valueOf(product.getPrice()));
         holder.txtDuration.setText("Duration : "+String.valueOf(product.getDuration()));
-        holder.soldTo.setText("Sold status : "+String.valueOf(product.getSoldTo()));
 
         // Load image using Picasso or Glide (replace with your preferred library)
         Picasso.get().load(product.getImageUrl()).into(holder.imageView);
+
+        //on click listener to the specific product
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), ProductDetails.class);
+                intent.putExtra("product", product);
+                v.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override

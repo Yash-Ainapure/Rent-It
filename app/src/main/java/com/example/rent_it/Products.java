@@ -67,7 +67,9 @@ public class Products extends AppCompatActivity {
 
                         for (DataSnapshot productSnapshot : myProductsSnapshot.getChildren()) {
                             ProductInfo productInfo = productSnapshot.getValue(ProductInfo.class);
-                            productList.add(productInfo);
+                            if(productInfo.getSoldTo().equals("none")){
+                                productList.add(productInfo);
+                            }
                         }
                     }
                 }

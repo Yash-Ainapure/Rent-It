@@ -120,7 +120,8 @@ public class UploadNewProduct extends AppCompatActivity {
                     String LoggedUserEmail = user.getUid();
                     databaseReference = FirebaseDatabase.getInstance().getReference().child("users").child(LoggedUserEmail).child("myProducts");
                     String UserId=name;
-                    ProductInfo info=new ProductInfo(name,price,description,duration,imageUrl,"unapproved","none");
+                    Log.d("tag","UserEmail : "+user.getEmail());
+                    ProductInfo info=new ProductInfo(name,price,description,duration,imageUrl,"unapproved","none",user.getEmail().toString());
                     databaseReference.child(UserId).setValue(info).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
