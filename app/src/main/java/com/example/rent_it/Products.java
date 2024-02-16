@@ -50,7 +50,7 @@ public class Products extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         List<ProductInfo> productList = new ArrayList<>();
-        productAdapter = new ProductAdapter(productList);
+        productAdapter = new ProductAdapter(productList,this);
         recyclerView.setAdapter(productAdapter);
 
         databaseReference = FirebaseDatabase.getInstance().getReference("users");

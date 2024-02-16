@@ -32,7 +32,7 @@ public class MyProducts extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         List<ProductInfo> productList = new ArrayList<>();
-        productAdapter = new ProductAdapter(productList);
+        productAdapter = new ProductAdapter(productList,this);
         recyclerView.setAdapter(productAdapter);
 
         String UID= FirebaseAuth.getInstance().getUid();
