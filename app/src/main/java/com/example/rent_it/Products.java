@@ -48,6 +48,8 @@ public class Products extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        searchEdt = findViewById(R.id.searchEdt);
+        searchBtn = findViewById(R.id.searchBtn);
 
         List<ProductInfo> productList = new ArrayList<>();
         productAdapter = new ProductAdapter(productList,this);
@@ -81,6 +83,22 @@ public class Products extends AppCompatActivity {
                 Toast.makeText(Products.this, "Failed to load products: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+
+        searchBtn.setOnClickListener(view -> {
+            String searchQuery = searchEdt.getText().toString().toLowerCase().trim();
+            List<ProductInfo> filteredList = new ArrayList<>();
+
+            for (ProductInfo product : productList) {
+                if (product.getName().toLowerCase().contains(searchQuery) ||
+                        product.getDescription().toLowerCase().contains(searchQuery)) {
+                    filteredList.add(product);
+                }
+            }
+
+            // Update the RecyclerView with the filtered list
+            productAdapter.updateList(filteredList);
+        });
+
 
     }
 }

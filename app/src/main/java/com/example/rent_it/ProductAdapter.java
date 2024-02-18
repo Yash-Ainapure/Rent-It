@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
@@ -131,6 +132,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         }
 
     }
+    public void updateList(List<ProductInfo> newList) {
+        productList = new ArrayList<>();
+        productList.addAll(newList);
+        notifyDataSetChanged();
+    }
+
 
 
     public static class ProductViewHolder extends RecyclerView.ViewHolder {
