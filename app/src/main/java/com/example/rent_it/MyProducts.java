@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,11 +24,13 @@ public class MyProducts extends AppCompatActivity {
     private ProductAdapter productAdapter;
     private RecyclerView recyclerView;
     private DatabaseReference databaseReference;
+    private TextView totalSpendings;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_products);
 
+        totalSpendings=findViewById(R.id.spendings);
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -37,10 +40,13 @@ public class MyProducts extends AppCompatActivity {
 
         String UID= FirebaseAuth.getInstance().getUid();
         databaseReference = FirebaseDatabase.getInstance().getReference("users").child(UID);
+        final int[] total = {0};
+
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 productList.clear();
+                total[0] = 0;
 
                 // Check if the "myProducts" node exists for the specified UID
                 if (dataSnapshot.child("myProducts").exists()) {
@@ -49,11 +55,13 @@ public class MyProducts extends AppCompatActivity {
                     // Iterate over products and add them to the list
                     for (DataSnapshot productSnapshot : myProductsSnapshot.getChildren()) {
                         ProductInfo productInfo = productSnapshot.getValue(ProductInfo.class);
+                        total[0] +=Integer.parseInt(productInfo.getPrice());
                         productList.add(productInfo);
                     }
 
                     // Notify the adapter about the data change
                     productAdapter.notifyDataSetChanged();
+                    totalSpendings.setText("Total Earnings: ₹" + total[0]);
                 } else {
                     // "myProducts" node doesn't exist, handle accordingly (e.g., show a message)
                     Toast.makeText(MyProducts.this, "No products found for this user", Toast.LENGTH_SHORT).show();

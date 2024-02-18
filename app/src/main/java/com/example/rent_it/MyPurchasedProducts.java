@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,12 +25,14 @@ public class MyPurchasedProducts extends AppCompatActivity {
     private PurchasedProductAdapter productAdapter;
     DatabaseReference ref;
     private RecyclerView recyclerView;
+    private TextView totalSpendings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_purchased_products);
 
+        totalSpendings=findViewById(R.id.spendings);
         List<ProductInfo> productList = new ArrayList<>();
         String UID=FirebaseAuth.getInstance().getCurrentUser().getUid();
         ref = FirebaseDatabase.getInstance().getReference("users").child(UID);
@@ -37,21 +41,25 @@ public class MyPurchasedProducts extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         productAdapter = new PurchasedProductAdapter(productList);
         recyclerView.setAdapter(productAdapter);
+        final int[] total = {0};
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 productList.clear();
+                total[0] = 0;
 
                 if (dataSnapshot.child("myPurchasedProducts").exists()) {
                     DataSnapshot myProductsSnapshot = dataSnapshot.child("myPurchasedProducts");
 
                     for (DataSnapshot productSnapshot : myProductsSnapshot.getChildren()) {
                         ProductInfo productInfo = productSnapshot.getValue(ProductInfo.class);
+                        total[0] +=Integer.parseInt(productInfo.getPrice());
                         productList.add(productInfo);
                     }
 
                     // Notify the adapter about the data change
                     productAdapter.notifyDataSetChanged();
+                    totalSpendings.setText("Total Spendings: ₹" + total[0]);
                 } else {
                     // "myProducts" node doesn't exist, handle accordingly (e.g., show a message)
                     Toast.makeText(MyPurchasedProducts.this, "No products found for this user", Toast.LENGTH_SHORT).show();
@@ -63,7 +71,6 @@ public class MyPurchasedProducts extends AppCompatActivity {
                 Toast.makeText(MyPurchasedProducts.this, "Failed to load products: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-
 
     }
 }
