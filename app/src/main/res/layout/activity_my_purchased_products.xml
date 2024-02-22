@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
+    android:background="@color/app_bg"
     tools:context=".MyProducts">
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,9 +26,11 @@
         <TextView
             android:id="@+id/spendings"
             android:text="Total Spendings : "
-            android:textSize="16sp"
-            android:padding="15dp"
-            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:paddingHorizontal="16dp"
+            android:layout_marginVertical="8dp"
+            android:textColor="@color/btnbg"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </LinearLayout>

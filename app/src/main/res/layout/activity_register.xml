@@ -8,16 +8,28 @@
     android:background="@color/primary"
     >
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.064"
+        app:srcCompat="@drawable/rent" />
 
     <ScrollView
-        android:layout_width="420dp"
-        android:layout_height="631dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/signupbg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
         app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout
@@ -38,6 +50,7 @@
                 android:textColor="@color/primary_dark"
                 android:textSize="30dp"
                 android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/textView6"
                 android:layout_width="wrap_content"
@@ -45,6 +58,7 @@
                 android:text="Fill all the information below!!!"
                 android:textColor="#E1919191"
                 android:textSize="20dp" />
+
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
@@ -56,6 +70,7 @@
                 android:textStyle="bold"
 
                 />
+
             <EditText
                 android:id="@+id/editTextText"
                 android:layout_width="match_parent"
@@ -74,12 +89,11 @@
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Email"
                 android:layout_marginTop="10dp"
+                android:text="Email"
                 android:textColor="@color/btnbg"
                 android:textSize="16dp"
-                android:textStyle="bold"
-                />
+                android:textStyle="bold" />
 
 
             <EditText
@@ -99,12 +113,11 @@
                 android:id="@+id/textView4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Phone No."
                 android:layout_marginTop="10dp"
+                android:text="Phone No."
                 android:textColor="@color/btnbg"
                 android:textSize="16dp"
-                android:textStyle="bold"
-                />
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/editTextPhone"
@@ -123,12 +136,11 @@
                 android:id="@+id/textView4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Password"
                 android:layout_marginTop="10dp"
+                android:text="Password"
                 android:textColor="@color/btnbg"
                 android:textSize="16dp"
-                android:textStyle="bold"
-                />
+                android:textStyle="bold" />
 
 
             <EditText
@@ -173,11 +185,11 @@
                 android:id="@+id/register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Already have an account?! Login Here"
                 android:textColor="@color/btnbg"
                 android:textSize="14dp"
-                android:layout_marginTop="20dp"
-                android:textStyle="bold"
-                android:text="Already have an account?! Login Here" />
+                android:textStyle="bold" />
         </LinearLayout>
     </ScrollView>
 

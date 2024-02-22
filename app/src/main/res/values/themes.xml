@@ -3,14 +3,17 @@
     <style name="Base.Theme.RentIt" parent="Theme.AppCompat.Light">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:statusBarColor">@color/primary</item>
     </style>
 
-    <style name="Theme.RentIt" parent="Base.Theme.RentIt" />
+    <style name="Theme.RentIt" parent="Base.Theme.RentIt" >
+        <item name="android:statusBarColor">@color/primary</item>
+    </style>
     <style name="Theme.RentIt1" parent="Theme.AppCompat.Light.NoActionBar" >
         <item name="android:statusBarColor">@color/primary</item>
     </style>
 
     <style name="AppTheme.Navigation" parent="Theme.Material3.DayNight">
-        <!-- Customize your theme here if needed -->
+        <!-- Customize your theme here if needed --><item name="android:statusBarColor">@color/primary</item>
     </style>
 </resources>
