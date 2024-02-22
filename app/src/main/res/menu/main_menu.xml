@@ -10,9 +10,9 @@
         <item android:id="@+id/nav_trip" android:title="My Orders" >
             <menu>
                 <group>
-                    <item android:id="@+id/upload"
-                        android:title="Upload a product"
-                        android:icon="@drawable/managetrip"/>
+<!--                    <item android:id="@+id/upload"-->
+<!--                        android:title="Upload a product"-->
+<!--                        android:icon="@drawable/managetrip"/>-->
                     <item android:id="@+id/view_manage"
                         android:title="My purchased products"
                         android:icon="@drawable/managetrip"/>

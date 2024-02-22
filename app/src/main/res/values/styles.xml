@@ -8,4 +8,22 @@
     <style name="round">
         <item name="cornerSize">50%</item>
     </style>
+    <style name="edit_txt">
+        <item name="android:background">@drawable/custom_edit_text</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingHorizontal">30dp</item>
+        <item name="android:paddingVertical">16dp</item>
+        <item name="android:textColor">@color/secondary</item>
+        <item name="android:layout_marginVertical">4dp</item>
+        <item name="android:layout_marginHorizontal">16dp</item>
+    </style>
+
+    <style name="btn_bg">
+        <item name="android:background">@drawable/custom_button_bg</item>
+        <item name="android:paddingHorizontal">30dp</item>
+        <item name="android:paddingVertical">16dp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginVertical">8dp</item>
+    </style>
 </resources>

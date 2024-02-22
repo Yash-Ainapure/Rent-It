@@ -33,7 +33,7 @@ public class Home extends AppCompatActivity {
     TextView username;
     LinearLayout customClothing;
     private FirebaseAuth mAuth;
-    Button seeProducts;
+    LinearLayout seeProducts,uploadProduct;
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -80,7 +80,16 @@ public class Home extends AppCompatActivity {
         FirebaseUser user = mAuth.getCurrentUser();
         username.setText(user.getEmail());
 
-        seeProducts = findViewById(R.id.button2);
+        seeProducts = findViewById(R.id.linearLayout7);
+        uploadProduct = findViewById(R.id.linearLayout5);
+
+
+        uploadProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Home.this,UploadNewProduct.class));
+            }
+        });
         seeProducts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,10 +105,11 @@ public class Home extends AppCompatActivity {
 
                 if (itemId == R.id.nav_account) {
                     //startActivity(new Intent(Home.this,MyAccount.class));
-                } else if (itemId == R.id.upload) {
-                    Log.i("MENU_DRAWER_TAG", "upload new products is clicked");
-                    startActivity(new Intent(Home.this,UploadNewProduct.class));
                 }
+//                else if (itemId == R.id.upload) {
+//                    Log.i("MENU_DRAWER_TAG", "upload new products is clicked");
+//                    startActivity(new Intent(Home.this,UploadNewProduct.class));
+//                }
                 else if (itemId == R.id.view_manage) {
                     Log.i("MENU_DRAWER_TAG", "my purchased products is clicked");
                     startActivity(new Intent(Home.this,MyPurchasedProducts.class));
