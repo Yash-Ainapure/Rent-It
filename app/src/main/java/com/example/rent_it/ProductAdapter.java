@@ -49,11 +49,18 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         holder.txtName.setText("Name : "+product.getName());
         holder.txtPrice.setText("Price : "+String.valueOf(product.getPrice()));
         holder.txtDuration.setText("Duration : "+String.valueOf(product.getDuration()));
-        if(product.getOwnerId().equals(FirebaseAuth.getInstance().getCurrentUser().getEmail())){
-            if(!product.getSoldTo().equals("none")) {
-                holder.soldTo.setText("purchased by: "+String.valueOf(product.getSoldTo()));
+//        if(product.getOwnerId().equals(FirebaseAuth.getInstance().getCurrentUser().getEmail())){
+//            if(!product.getSoldTo().equals("none")) {
+//                holder.soldTo.setText("purchased by: "+String.valueOf(product.getSoldTo()));
+//            }
+//        }else{
+//            holder.btnDelete.setVisibility(View.GONE);
+//        }
+        if (product.getOwnerId() != null && FirebaseAuth.getInstance().getCurrentUser() != null && product.getOwnerId().equals(FirebaseAuth.getInstance().getCurrentUser().getEmail())) {
+            if (product.getSoldTo() != null && !product.getSoldTo().equals("none")) {
+                holder.soldTo.setText("purchased by: " + String.valueOf(product.getSoldTo()));
             }
-        }else{
+        } else {
             holder.btnDelete.setVisibility(View.GONE);
         }
         // Load image using Picasso or Glide (replace with your preferred library)
